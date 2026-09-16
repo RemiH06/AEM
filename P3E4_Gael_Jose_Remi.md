@@ -6,7 +6,7 @@
 
 **Actividad:** Práctica 03 Máxima Verosimilitud
 
-**Equipo:** [Número o Nombre de tu equipo]
+**Equipo:** 4
 
 **Integrantes:**
 
