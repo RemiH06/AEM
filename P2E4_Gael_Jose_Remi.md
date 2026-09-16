@@ -6,7 +6,7 @@
 
 **Actividad:** Práctica 02 - Distribución normal y multinormal
 
-**Equipo:** [Número o Nombre de tu equipo]
+**Equipo:** 4
 
 **Integrantes:**
 
