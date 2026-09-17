@@ -14,7 +14,7 @@
 
 2\. Gael
 
-3\. Remiel
+3\. Lambda Remiel Heredia Pérez
 
 **Fecha:** 17 de septiembre de 2026
 

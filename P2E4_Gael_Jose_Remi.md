@@ -6,7 +6,7 @@
 
 **Actividad:** Práctica 02 - Distribución normal y multinormal
 
-**Equipo:** [Número o Nombre de tu equipo]
+**Equipo:** 4
 
 **Integrantes:**
 
@@ -14,7 +14,7 @@
 
 2\. Gael
 
-3\. Remiel
+3\. Lambda Remiel Heredia Pérez
 
 **Fecha:** 17 de septiembre de 2026
 
@@ -277,10 +277,73 @@ $$
 f_{X_1,X_2}(x_1,x_2) = \frac{1}{2\pi\sigma_1\sigma_2\sqrt{1-\rho^2}} \exp\left\{ -\frac{1}{2(1-\rho^2)} \left[ \frac{(x_1-\mu_1)^2}{\sigma_1^2} - 2\rho\frac{(x_1-\mu_1)(x_2-\mu_2)}{\sigma_1\sigma_2} + \frac{(x_2-\mu_2)^2}{\sigma_2^2} \right] \right\}
 $$
 
--   [Tu desarrollo y respuesta aquí. Desglosa las varianzas, covarianzas y calcula $\rho$ para sustituirlos en la fórmula general].
+**Paso 1: Identificar los parámetros a partir de $\mu$ y $\Sigma$.**
+
+$$
+\mu_1 = 45, \quad \mu_2 = 120
+$$
+$$
+\sigma_1^2 = 16 \implies \sigma_1 = 4, \qquad \sigma_2^2 = 25 \implies \sigma_2 = 5
+$$
+$$
+\text{Cov}(X_1,X_2) = \sigma_{12} = 4
+$$
+
+**Paso 2: Calcular el coeficiente de correlación** $\rho$.
+
+$$
+\rho = \frac{\sigma_{12}}{\sigma_1\sigma_2} = \frac{4}{4\times 5} = 0.2
+$$
+
+**Paso 3: Calcular** $1-\rho^2$, que se usa tanto en el coeficiente normalizador como en el exponente.
+
+$$
+1-\rho^2 = 1-(0.2)^2 = 1-0.04 = 0.96
+$$
+
+**Paso 4: Calcular el coeficiente normalizador** $\dfrac{1}{2\pi\sigma_1\sigma_2\sqrt{1-\rho^2}}$.
+
+$$
+2\pi\sigma_1\sigma_2\sqrt{1-\rho^2} = 2\pi(4)(5)\sqrt{0.96} \approx 2\pi(20)(0.9798) \approx 123.13
+$$
+$$
+\frac{1}{2\pi\sigma_1\sigma_2\sqrt{1-\rho^2}} \approx \frac{1}{123.13} \approx 0.008122
+$$
+
+**Paso 5: Calcular el factor del exponente** $-\dfrac{1}{2(1-\rho^2)}$.
+
+$$
+-\frac{1}{2(1-\rho^2)} = -\frac{1}{2(0.96)} = -\frac{1}{1.92} \approx -0.5208
+$$
+
+**Paso 6: Armar el término entre corchetes, sustituyendo** $\sigma_1, \sigma_2, \rho, \mu_1, \mu_2$.
+
+$$
+\frac{(x_1-45)^2}{16} - 2(0.2)\frac{(x_1-45)(x_2-120)}{(4)(5)} + \frac{(x_2-120)^2}{25}
+$$
+
+El término cruzado se simplifica:
+
+$$
+2(0.2)\frac{1}{(4)(5)} = \frac{0.4}{20} = 0.02
+$$
+
+quedando:
+
+$$
+\frac{(x_1-45)^2}{16} - 0.02(x_1-45)(x_2-120) + \frac{(x_2-120)^2}{25}
+$$
+
+**Paso 7: Sustituir todo en la fórmula general para obtener la densidad final.**
+
+$$
+f_{X_1,X_2}(x_1,x_2) \approx 0.008122 \times \exp\left\{-0.5208\left[\frac{(x_1-45)^2}{16} - 0.02(x_1-45)(x_2-120) + \frac{(x_2-120)^2}{25}\right]\right\}
+$$
 
 ------------------------------------------------------------------------
 
 ## Conclusiones
 
-[Escribe aquí tus conclusiones sobre lo aprendido en esta práctica, cómo las transformaciones lineales afectan la media y la varianza en una distribución normal, y la interpretación de la matriz de varianzas y covarianzas en el caso bivariado.]
+A lo largo de esta práctica comprobamos que una transformación lineal $Y=aX+b$ preserva la normalidad de la variable, desplazando la media a $\mu_Y=a\mu+b$ y escalando la varianza a $\sigma_Y^2=a^2\sigma^2$. Esto permitió resolver los problemas 1 a 4 de dos formas equivalentes: estandarizando directamente sobre la variable transformada, o despejando el valor original de $X$ y estandarizando con sus parámetros originales.
+
+En el caso bivariado, la matriz de varianzas y covarianzas $\Sigma$ resultó clave para describir la relación conjunta entre $X_1$ y $X_2$: su diagonal aporta las varianzas individuales ($\sigma_1^2$, $\sigma_2^2$) y sus elementos fuera de la diagonal capturan la covarianza, de la cual se deriva el coeficiente de correlación $\rho$. En el problema 5, un $\rho=0.2$ indica una asociación lineal positiva pero débil entre $X_1$ y $X_2$, lo cual se refleja en la función de densidad conjunta como un término cruzado de peso relativamente bajo frente a los términos cuadráticos individuales.
