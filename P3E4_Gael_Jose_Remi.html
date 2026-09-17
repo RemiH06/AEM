@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>ITESO, Universidad Jesuita de Guadalajara</title>
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['$', '$']], displayMath: [['$$', '$$']] }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+  body {
+    font-family: Georgia, "Times New Roman", serif;
+    max-width: 850px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+    line-height: 1.6;
+    color: #1a1a1a;
+  }
+  h1, h2, h3 { font-family: Arial, Helvetica, sans-serif; }
+  hr { border: none; border-top: 1px solid #ccc; margin: 2rem 0; }
+  code { background: #f2f2f2; padding: 0.1rem 0.3rem; }
+</style>
+</head>
+<body>
+<h1>ITESO, Universidad Jesuita de Guadalajara</h1>
+<p><strong>Materia:</strong> Análisis Estadístico Multivariable</p>
+<p><strong>Profesor:</strong> Prof. Luis Alvarado</p>
+<p><strong>Actividad:</strong> Práctica 03 Máxima Verosimilitud</p>
+<p><strong>Equipo:</strong> 4</p>
+<p><strong>Integrantes:</strong></p>
+<p>1. José García Fernández Del Valle</p>
+<p>2. Gael</p>
+<p>3. Lambda Remiel Heredia Pérez</p>
+<p><strong>Fecha:</strong> 17 de septiembre de 2026</p>
+<hr />
+<h2>Introducción</h2>
+<h2>En la estadística, la estimación de parámetros es una herramienta fundamental que nos permite entender el comportamiento de una población a partir de una muestra de datos. Para lograr esto, uno de los enfoques más utilizados es el método de Máxima Verosimilitud (EMV). Este método opera bajo un principio lógico: busca encontrar el valor del parámetro que haga que los datos que ya observamos sean los más probables de ocurrir. El propósito de esta práctica es aplicar este método a la distribución de Poisson —un modelo utilizado para analizar el conteo de eventos en un tiempo determinado— y desarrollar matemáticamente el proceso para encontrar su estimador óptimo.</h2>
+<h2>Desarrollo y Resultados</h2>
+<h3>Máxima Verosimilitud para la distribución de Poisson</h3>
+<p>La variable aleatoria $X$ sigue una distribución de Poisson con parámetro desconocido $\lambda$, es decir, $X \sim \text{Poisson}(\lambda)$.</p>
+<p>La función de densidad de probabilidad (PDF) de una distribución de Poisson está dada por:</p>
+<p>$$
+f(k; \lambda) = P(X = k) = \frac{\lambda^k e^{-\lambda}}{k!}, \quad k=0,1,2,...
+$$</p>
+<p>Se tiene una muestra aleatoria independiente $X_1, X_2, ..., X_n$ extraída de una distribución de Poisson con parámetro $\lambda$.</p>
+<p><strong>1. Investiga un poco de la distribución de Poisson, y da un ejemplo de un experimento o suceso en el que es común que sea utilizado.</strong></p>
+<p>Utilice la distribución de Poisson para describir el número de veces que un evento ocurre en un espacio finito de observación. Por ejemplo, una distribución de Poisson puede describir el número de defectos en el sistema mecánico de un avión o el número de llamadas a un centro de llamadas en una hora. La distribución de Poisson se utiliza con frecuencia en el control de calidad, los estudios de fiabilidad/supervivencia y los seguros.</p>
+<p>Una variable sigue una distribución de Poisson si se cumplen las siguientes condiciones:
+* Los datos son conteos de eventos (enteros no negativos, sin límite superior).
+* Todos los eventos son independientes.
+* La tasa promedio no cambia durante el período de interés.</p>
+<p>La distribución de Poisson se especifica por un parámetro: lambda ($\lambda$). Este parámetro es igual a la media y la varianza. Cuando lambda aumente a valores lo suficientemente grandes, la distribución normal ($\lambda$, $\lambda$) podría utilizarse para aproximar la distribución de Poisson.</p>
+<p>Fuente: Minitab, LLC. (s.f.). Distribución de Poisson. Soporte de Minitab. Recuperado el 16 de septiembre de 2026, de https://support.minitab.com/es-mx/minitab/help-and-how-to/probability-distributions-random-data-and-resampling-analyses/supporting-topics/distributions/poisson-distribution/</p>
+<hr />
+<p><strong>Ejercicio:</strong>
+Un centro de atención al cliente sabe, por sus registros históricos, que recibe en promedio 15 llamadas por hora.
+<strong>Pregunta:</strong> ¿Cuál es la probabilidad de que en la próxima hora reciban exactamente 20 llamadas?</p>
+<p><strong>a. Datos del problema:</strong>
+Tenemos un promedio de llamadas por hora de $\lambda = 15$ y queremos calcular la probabilidad de recibir exactamente $k = 20$ llamadas.</p>
+<p><strong>b. Fórmula general de la distribución de Poisson:</strong></p>
+<p>$$P(X = k) = \frac{\lambda^k e^{-\lambda}}{k!}$$</p>
+<p><strong>c. Sustitución de los valores:</strong></p>
+<p>$$P(X = 20) = \frac{15^{20} e^{-15}}{20!}$$</p>
+<p><strong>d. Resultado final:</strong></p>
+<p>$$P(X = 20) \approx 0.0418 \implies 4.18\%$$</p>
+<hr />
+<p><strong>2. Encuentra el estimador de máxima verosimilitud (EMV) para $\lambda$, es decir, el valor de $\lambda$ que maximiza la función de log-verosimilitud.</strong></p>
+<p><strong>a. Función de verosimilitud conjunta $L(\lambda)$:</strong>
+Dado que tenemos una muestra aleatoria independiente $X_1, X_2, \dots, X_n$, la función de verosimilitud conjunta es el producto de las funciones de probabilidad individuales:</p>
+<p>$$L(\lambda) = \prod_{i=1}^{n} P(X_i = x_i) = \prod_{i=1}^{n} \frac{\lambda^{x_i} e^{-\lambda}}{x_i!}$$</p>
+<p>Agrupando los términos (sumando los exponentes de $\lambda$ y multiplicando $e^{-\lambda}$ por sí mismo $n$ veces), obtenemos:</p>
+<p>$$L(\lambda) = \frac{\lambda^{\sum_{i=1}^{n} x_i} e^{-n\lambda}}{\prod_{i=1}^{n} x_i!}$$</p>
+<p><strong>b. Función de log-verosimilitud $l(\lambda)$:</strong>
+Aplicamos el logaritmo natural ($\ln$) para simplificar la expresión y transformar las multiplicaciones en sumas:</p>
+<p>$$l(\lambda) = \ln(L(\lambda)) = \ln\left( \frac{\lambda^{\sum_{i=1}^{n} x_i} e^{-n\lambda}}{\prod_{i=1}^{n} x_i!} \right)$$</p>
+<p>Usando las propiedades de los logaritmos, esto se expande a:</p>
+<p>$$l(\lambda) = \ln\left( \lambda^{\sum_{i=1}^{n} x_i} \right) + \ln\left( e^{-n\lambda} \right) - \ln\left( \prod_{i=1}^{n} x_i! \right)$$</p>
+<p>$$l(\lambda) = \left( \sum_{i=1}^{n} x_i \right) \ln(\lambda) - n\lambda - \ln\left( \prod_{i=1}^{n} x_i! \right)$$</p>
+<p><strong>c. Derivada de $l(\lambda)$ respecto a $\lambda$:</strong>
+Ahora derivamos la función de log-verosimilitud con respecto a nuestro parámetro $\lambda$. Dado que el último término no contiene $\lambda$, se considera una constante y su derivada es cero:</p>
+<p>$$\frac{d}{d\lambda} l(\lambda) = \frac{\sum_{i=1}^{n} x_i}{\lambda} - n$$</p>
+<p><strong>d. Igualar a cero y despejar $\hat{\lambda}$:</strong>
+Para encontrar el máximo, igualamos la derivada a cero y despejamos para obtener nuestro estimador $\hat{\lambda}$:</p>
+<p>$$\frac{\sum_{i=1}^{n} x_i}{\hat{\lambda}} - n = 0$$</p>
+<p>Pasamos la $n$ al otro lado:</p>
+<p>$$\frac{\sum_{i=1}^{n} x_i}{\hat{\lambda}} = n$$</p>
+<p>Despejamos $\hat{\lambda}$:</p>
+<p>$$\hat{\lambda} = \frac{\sum_{i=1}^{n} x_i}{n}$$</p>
+<hr />
+<p><strong>3. Interpreta el resultado obtenido en términos de la media muestral.</strong> Como se demostró en el desarrollo anterior, el estimador de máxima verosimilitud (EMV) para el parámetro $\lambda$ resulta ser:</p>
+<p>$$\hat{\lambda} = \frac{\sum_{i=1}^{n} x_i}{n} = \bar{X}$$</p>
+<p><strong>Relación con la media muestral:</strong></p>
+<p>Este resultado indica que la mejor estimación (en términos de máxima verosimilitud) para el verdadero parámetro $\lambda$ de la población es, intuitivamente, el <strong>promedio aritmético de los datos observados en la muestra</strong> (la media muestral, $\bar{X}$).</p>
+<p>En el contexto de la distribución de Poisson, el parámetro $\lambda$ representa la tasa promedio de ocurrencia de un evento en un intervalo dado (el valor esperado, $E(X) = \lambda$). Por lo tanto, tiene perfecto sentido lógico y matemático que si queremos estimar cuántos eventos ocurren en promedio en la población general, la mejor manera de hacerlo sea promediando la cantidad de eventos que ocurrieron en nuestra muestra recolectada. </p>
+<p>En términos prácticos (como en el ejemplo del centro de atención al cliente), si tomamos una muestra de $n$ horas diferentes y sumamos todas las llamadas recibidas en esas horas ($\sum x_i$), al dividir ese total entre el número de horas observadas ($n$), obtenemos exactamente $\bar{X}$. Este promedio empírico es el estimador más probable para el verdadero promedio teórico $\lambda$.</p>
+<hr />
+<h2>Conclusiones</h2>
+<p>Al finalizar esta práctica, pudimos comprobar cómo el método de máxima verosimilitud nos permite conectar la teoría estadística con los datos empíricos. A través del desarrollo matemático y usando las propiedades de los logaritmos, demostramos que el mejor estimador para el parámetro $\lambda$ de la distribución de Poisson es la media muestral ($\bar{X}$). Esto nos indica que la mejor manera de estimar la tasa promedio de eventos en una población es calculando el promedio de los datos que recolectamos. Así, confirmamos que este método matemático nos ofrece una base rigurosa para respaldar resultados que también tienen mucho sentido intuitivo.</p>
+</body>
+</html>

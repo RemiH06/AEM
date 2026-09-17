@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>ITESO, Universidad Jesuita de Guadalajara</title>
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['$', '$']], displayMath: [['$$', '$$']] }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+  body {
+    font-family: Georgia, "Times New Roman", serif;
+    max-width: 850px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+    line-height: 1.6;
+    color: #1a1a1a;
+  }
+  h1, h2, h3 { font-family: Arial, Helvetica, sans-serif; }
+  hr { border: none; border-top: 1px solid #ccc; margin: 2rem 0; }
+  code { background: #f2f2f2; padding: 0.1rem 0.3rem; }
+</style>
+</head>
+<body>
+<h1>ITESO, Universidad Jesuita de Guadalajara</h1>
+<p><strong>Materia:</strong> Análisis Estadístico Multivariable</p>
+<p><strong>Profesor:</strong> Prof. Luis Alvarado</p>
+<p><strong>Actividad:</strong> Práctica 02 - Distribución normal y multinormal</p>
+<p><strong>Equipo:</strong> 4</p>
+<p><strong>Integrantes:</strong></p>
+<p>1. José García Fernández Del Valle</p>
+<p>2. Gael</p>
+<p>3. Lambda Remiel Heredia Pérez</p>
+<p><strong>Fecha:</strong> 17 de septiembre de 2026</p>
+<hr />
+<h2>Introducción</h2>
+<p>La distribución normal o gaussiana es una de las herramientas fundamentales en la teoría de la probabilidad y la estadística inferencial debido a su recurrencia en fenómenos naturales, cuantitativos y sociales. Cuando una variable aleatoria continua $X$ sigue una distribución normal, sus propiedades probabilísticas quedan completamente determinadas por su media ($\mu$) y su varianza ($\sigma^2$). Además, bajo transformaciones lineales de la forma $Y = aX + b$, la variable resultante mantiene un comportamiento normal con parámetros transformados $\mu_Y = a\mu + b$ y $\sigma_Y^2 = a^2\sigma^2$.</p>
+<p>En el ámbito multivariable, la distribución normal se generaliza a la distribución normal $n$-dimensional o multinormal. En el caso bivariado ($n=2$), la variable conjunta viene definida por un vector de medias $\boldsymbol{\mu}$ y una matriz de varianzas y covarianzas $\boldsymbol{\Sigma}$, la cual captura no solo las variabilidades individuales de cada variable, sino también el grado de asociación lineal existente entre ellas a través del coeficiente de correlación ($\rho$). </p>
+<p>El propósito de esta práctica es aplicar los conceptos de estandarización, propiedades de transformaciones lineales en variables univariadas y la formulación explícita de la función de densidad de probabilidad para distribuciones normales bivariadas mediante la resolución de problemas aplicados.</p>
+<hr />
+<h2>Desarrollo y Resultados</h2>
+<h3>Problema 1: Temperatura en la Ciudad</h3>
+<p>En una ciudad, la temperatura ambiente $X$ (en °C) se distribuye normalmente con media 20°C y desviación estándar 5°C.</p>
+<p><strong>1. Calcula la probabilidad de que la temperatura en Fahrenheit se encuentre entre 68°F y 86°F, dado que</strong> $F=1.8X+32$. 
+- Convertimos a Celcius:
+$$
+X = \frac{68-32}{1.8} = 20°C
+$$
+$$
+X = \frac{86-32}{1.8} = 30°C
+$$
+- Convertimos a $Z$ Y luego buscamos valor en la tabla de $Z$:
+$$
+Z_1 = \frac{20-20}{5} = 0
+$$
+$$
+Z_2 = \frac{30-20}{5} = 2
+$$
+- Por lo tanto nuestra $Z$ que buscamos quedaria:
+$$
+(0<Z<2)≈0.4772
+$$</p>
+<p><strong>2. ¿Cuál es la probabilidad de que la temperatura no exceda los 25°C?</strong> 
+- Convertimos a $Z$: 
+$$
+Z = \frac{25-20}{5}=1
+$$
+- Por lo tanto la $Z$ que buscamos quedaria:
+$$
+(Z\leq 1)≈0.3413
+$$
+- Pero como buscamos una probabilidad menor que un numero positivo sumamos 0.5000:
+$$
+(Z\leq 1) ≈ 0.3413 + 0.5000 ≈ 0.8413
+$$</p>
+<p><strong>3. ¿Cuál es la probabilidad de que la temperatura no baje de los 90°F?</strong> 
+- Cobertimos a Clecius:
+$$
+X = \frac{90-32}{1.8} ≈ 32.22
+$$
+- Convertimos a valores de $Z$:
+$$
+Z = \frac{32.22 - 20}{5} ≈ 2.4
+$$
+- Por lo tanto la $Z$ que buscamos quedaria:
+$$
+(Z\geq2.4) ≈ 0.4918
+$$
+- Pero como buscamos una probabilidad en la cola superior se resta:
+$$
+(Z\geq2.4) ≈ 0.4918 - 0.5000 ≈ 0.0082
+$$</p>
+<hr />
+<h3>Problema 2: Calibración de un Dispositivo de Medición</h3>
+<p>Un instrumento de medición registra la magnitud de una señal eléctrica $X$ que sigue una distribución normal con media 100 y desviación estándar 4. Para calibrar el dispositivo se aplica la transformación lineal $Y=0.95X+2$.</p>
+<p><strong>1. Determina la probabilidad de que la señal calibrada supere 102.</strong> 
+- Aplicamos nuestra transformacion lineal:
+$$
+X = \frac{102-2}{0.95} ≈ 105.26
+$$
+- Convertimos a $Z$:
+$$
+Z = \frac{105.26-100}{4} ≈ 1.32
+$$
+- Por lo tant  o la $Z$ que buscamos seria:
+$$
+(Z > 1.32) ≈ 0.4066
+$$
+- Cola superior se resta:
+$$
+(Z > 1.32) ≈ 0.4066 - 0.5000 ≈ 0.0934
+$$</p>
+<p><strong>2. Calcula la probabilidad de que la señal original se encuentre entre 98 y 104.</strong> 
+- Convertimos a $Z$:
+$$
+Z_1 = \frac{98-100}{4} ≈-0.5
+$$
+$$
+Z_2 = \frac{104-100}{4} ≈ 1
+$$
+- La $Z$ que buscamos seria:
+$$
+(0.5 \leq Z \leq 1) ≈ 0.1915 + 0.3413 ≈ 0.5328
+$$</p>
+<p><strong>3. ¿Cuál es la probabilidad de que la señal calibrada se sitúe entre 95 y 105?</strong> 
+- Calculamos las $X$
+$$
+X_1 = \frac{95-2}{0.95} ≈ 97.89
+$$
+$$
+X_2 = \frac{105-2}{0.95} ≈ 108.42
+$$
+- Caluclamos las Z:
+$$
+Z_1 = \frac{95-97}{3.8} \approx -0.52
+$$
+$$
+Z_2 = \frac{105-97}{3.8} \approx 2.1
+$$
+- La $Z$ que buscamos seria:
+$$
+(0.52 \leq Z \leq 2.1) \approx 0.1985 + 0.4821 \approx 0.6806
+$$</p>
+<hr />
+<h3>Problema 3: Retornos de Inversión</h3>
+<p>El rendimiento diario de un activo financiero se modela mediante la variable $X$ que sigue una distribución normal con media 0.15% y desviación estándar 0.8%. Se ajusta el rendimiento mediante la transformación $Y=1.2X-0.05\%$.</p>
+<p><strong>1. Calcula la probabilidad de que el rendimiento ajustado sea mayor a 0.2%.</strong> </p>
+<ul>
+<li>Aplicamos nuestra transformación lineal para despejar $X$:
+$$
+X = \frac{0.2 - (-0.05)}{1.2} = \frac{0.25}{1.2} \approx 0.2083
+$$</li>
+<li>Convertimos a $Z$:
+$$
+Z = \frac{0.2083 - 0.15}{0.8} \approx 0.07
+$$</li>
+<li>La $Z$ que buscamos seria:
+$$
+(Z > 0.07) \approx 0.0279
+$$</li>
+<li>Cola superior se resta:
+$$
+(Z > 0.07) \approx 0.5000 - 0.0279 \approx 0.4721
+$$</li>
+</ul>
+<p><strong>2. ¿Cuál es la probabilidad de que el rendimiento original sea inferior a 0.1%.</strong> 
+- Convertimos a $Z$:
+$$
+Z = \frac{0.1 - 0.15}{0.8} \approx -0.06
+$$
+- La $Z$ que buscamos seria:
+$$
+(Z < -0.06) \approx 0.0239
+$$
+- Cola inferior se resta:
+$$
+(Z < -0.06) \approx 0.5000 - 0.0239 \approx 0.4761
+$$</p>
+<p><strong>3. Determina la probabilidad de que el rendimiento ajustado se encuentre entre 0% y 0.3%.</strong> 
+- Calculamos las $X$:
+$$
+X_1 = \frac{0 - (-0.05)}{1.2} \approx 0.0417
+$$
+$$
+X_2 = \frac{0.3 - (-0.05)}{1.2} \approx 0.2917
+$$
+- Convertimos a $Z$:
+$$
+Z_1 = \frac{0.0417 - 0.15}{0.8} \approx -0.14
+$$
+$$
+Z_2 = \frac{0.2917 - 0.15}{0.8} \approx 0.18
+$$
+- La $Z$ que buscamos seria:
+$$
+(-0.14 \le Z \le 0.18) \approx 0.0557 + 0.0714 \approx 0.1271
+$$</p>
+<hr />
+<h3>Problema 4: Evaluación de Examen</h3>
+<p>Las calificaciones de un examen $X$ se distribuyen normalmente con media 70 y desviación estándar 12. Se implementa un bono que suma 5 puntos a cada calificación, de modo que la calificación final es $Y=X+5$.</p>
+<p><strong>1. Calcula la probabilidad de que un estudiante obtenga una calificación inferior a 75 sin el bono.</strong> 
+- Convertimos a $Z$:
+$$
+Z = \frac{75 - 70}{12} \approx 0.42
+$$
+- La $Z$ que buscamos seria:
+$$
+(Z \le 0.42) \approx 0.1628
+$$
+- Sumamos 0.5000 para la probabilidad inferior:
+$$
+(Z \le 0.42) \approx 0.5000 + 0.1628 \approx 0.6628
+$$</p>
+<p><strong>2. ¿Cuál es la probabilidad de que, con el bono, el estudiante obtenga al menos 80?</strong>
+- Convertimos a $X$:
+$$
+X = 80 - 5 = 75
+$$
+- Convertimos a $Z$:
+$$
+Z = \frac{75 - 70}{12} \approx 0.42
+$$
+- La $Z$ que buscamos seria:
+$$
+(Z \ge 0.42) \approx 0.1628
+$$
+- Cola superior se resta:
+$$
+(Z \ge 0.42) \approx 0.5000 - 0.1628 \approx 0.3372
+$$</p>
+<p><strong>3. Determina la probabilidad de que la calificación final se ubique entre 70 y 85.</strong> 
+- Calculamos las $X$:
+$$
+X_1 = 70 - 5 = 65
+$$
+$$
+X_2 = 85 - 5 = 80
+$$
+- Convertimos a $Z$:
+$$
+Z_1 = \frac{65 - 70}{12} \approx -0.42
+$$
+$$
+Z_2 = \frac{80 - 70}{12} \approx 0.83
+$$
+- La $Z$ que buscamos seria:
+$$
+(-0.42 \le Z \le 0.83) \approx 0.1628 + 0.2967 \approx 0.4595
+$$</p>
+<hr />
+<h3>Problema 5: Distribución Multinormal</h3>
+<p>Dados los siguientes valores: $X$ sigue una distribución normal bivariante con:</p>
+<p>$$
+X = \begin{pmatrix} X_1 \\ X_2 \end{pmatrix}, \quad \mu = \begin{pmatrix} 45 \\ 120 \end{pmatrix}, \quad \Sigma = \begin{pmatrix} 16 & 4 \\ 4 & 25 \end{pmatrix}
+$$</p>
+<p><strong>1. Determina la función de densidad de probabilidad de la variable multinormal</strong> $X$. <em>PISTA: Función de Densidad de la Distribución Normal Bivariada</em></p>
+<p>$$
+f_{X_1,X_2}(x_1,x_2) = \frac{1}{2\pi\sigma_1\sigma_2\sqrt{1-\rho^2}} \exp\left\{ -\frac{1}{2(1-\rho^2)} \left[ \frac{(x_1-\mu_1)^2}{\sigma_1^2} - 2\rho\frac{(x_1-\mu_1)(x_2-\mu_2)}{\sigma_1\sigma_2} + \frac{(x_2-\mu_2)^2}{\sigma_2^2} \right] \right\}
+$$</p>
+<p><strong>Paso 1: Identificar los parámetros a partir de $\mu$ y $\Sigma$.</strong></p>
+<p>$$
+\mu_1 = 45, \quad \mu_2 = 120
+$$
+$$
+\sigma_1^2 = 16 \implies \sigma_1 = 4, \qquad \sigma_2^2 = 25 \implies \sigma_2 = 5
+$$
+$$
+\text{Cov}(X_1,X_2) = \sigma_{12} = 4
+$$</p>
+<p><strong>Paso 2: Calcular el coeficiente de correlación</strong> $\rho$.</p>
+<p>$$
+\rho = \frac{\sigma_{12}}{\sigma_1\sigma_2} = \frac{4}{4\times 5} = 0.2
+$$</p>
+<p><strong>Paso 3: Calcular</strong> $1-\rho^2$, que se usa tanto en el coeficiente normalizador como en el exponente.</p>
+<p>$$
+1-\rho^2 = 1-(0.2)^2 = 1-0.04 = 0.96
+$$</p>
+<p><strong>Paso 4: Calcular el coeficiente normalizador</strong> $\dfrac{1}{2\pi\sigma_1\sigma_2\sqrt{1-\rho^2}}$.</p>
+<p>$$
+2\pi\sigma_1\sigma_2\sqrt{1-\rho^2} = 2\pi(4)(5)\sqrt{0.96} \approx 2\pi(20)(0.9798) \approx 123.13
+$$
+$$
+\frac{1}{2\pi\sigma_1\sigma_2\sqrt{1-\rho^2}} \approx \frac{1}{123.13} \approx 0.008122
+$$</p>
+<p><strong>Paso 5: Calcular el factor del exponente</strong> $-\dfrac{1}{2(1-\rho^2)}$.</p>
+<p>$$
+-\frac{1}{2(1-\rho^2)} = -\frac{1}{2(0.96)} = -\frac{1}{1.92} \approx -0.5208
+$$</p>
+<p><strong>Paso 6: Armar el término entre corchetes, sustituyendo</strong> $\sigma_1, \sigma_2, \rho, \mu_1, \mu_2$.</p>
+<p>$$
+\frac{(x_1-45)^2}{16} - 2(0.2)\frac{(x_1-45)(x_2-120)}{(4)(5)} + \frac{(x_2-120)^2}{25}
+$$</p>
+<p>El término cruzado se simplifica:</p>
+<p>$$
+2(0.2)\frac{1}{(4)(5)} = \frac{0.4}{20} = 0.02
+$$</p>
+<p>quedando:</p>
+<p>$$
+\frac{(x_1-45)^2}{16} - 0.02(x_1-45)(x_2-120) + \frac{(x_2-120)^2}{25}
+$$</p>
+<p><strong>Paso 7: Sustituir todo en la fórmula general para obtener la densidad final.</strong></p>
+<p>$$
+f_{X_1,X_2}(x_1,x_2) \approx 0.008122 \times \exp\left\{-0.5208\left[\frac{(x_1-45)^2}{16} - 0.02(x_1-45)(x_2-120) + \frac{(x_2-120)^2}{25}\right]\right\}
+$$</p>
+<hr />
+<h2>Conclusiones</h2>
+<p>A lo largo de esta práctica comprobamos que una transformación lineal $Y=aX+b$ preserva la normalidad de la variable, desplazando la media a $\mu_Y=a\mu+b$ y escalando la varianza a $\sigma_Y^2=a^2\sigma^2$. Esto permitió resolver los problemas 1 a 4 de dos formas equivalentes: estandarizando directamente sobre la variable transformada, o despejando el valor original de $X$ y estandarizando con sus parámetros originales.</p>
+<p>En el caso bivariado, la matriz de varianzas y covarianzas $\Sigma$ resultó clave para describir la relación conjunta entre $X_1$ y $X_2$: su diagonal aporta las varianzas individuales ($\sigma_1^2$, $\sigma_2^2$) y sus elementos fuera de la diagonal capturan la covarianza, de la cual se deriva el coeficiente de correlación $\rho$. En el problema 5, un $\rho=0.2$ indica una asociación lineal positiva pero débil entre $X_1$ y $X_2$, lo cual se refleja en la función de densidad conjunta como un término cruzado de peso relativamente bajo frente a los términos cuadráticos individuales.</p>
+</body>
+</html>
